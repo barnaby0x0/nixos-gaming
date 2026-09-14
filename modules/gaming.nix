@@ -12,7 +12,6 @@
     ];
 
     gamescopeSession.enable = true;
-
     remotePlay.openFirewall = true;
   };
 
@@ -20,30 +19,20 @@
 
   programs.gamescope = {
     enable = true;
-
     capSysNice = true;
   };
 
   environment.systemPackages = with pkgs; [
     mangohud
-
     protonup-qt
-
     steam-run
-
     vulkan-tools
-
     mesa-demos
-
     goverlay
-
     vkbasalt
-
     wine
     winetricks
-
     lutris
-
     heroic
   ];
 
