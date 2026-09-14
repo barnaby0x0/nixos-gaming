@@ -13,12 +13,8 @@
     ripgrep
     fd
     fzf
-
     btop
     htop
-
-    mangohud
-    protonup-qt
   ];
 
   programs.bash = {
