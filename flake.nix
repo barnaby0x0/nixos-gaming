@@ -1,5 +1,5 @@
 {
-  description = "NixOS Gaming - CachyOS optimized";
+  description = "NixOS Gaming - CachyOS optimized gaming system";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -36,18 +36,35 @@
       nixosConfigurations.gaming = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        specialArgs = {
-          inherit self;
-        };
-
         modules = [
+          # Disko
+          disko.nixosModules.disko
+
+          # CachyOS kernel
           {
             nixpkgs.overlays = [
               nix-cachyos-kernel.overlays.pinned
             ];
           }
 
+          # Host
           ./hosts/gaming
+
+          # System modules
+          ./modules/cachyos.nix
+          ./modules/desktop.nix
+          ./modules/gaming.nix
+          ./modules/performance.nix
+
+          # Home Manager
+          home-manager.nixosModules.home-manager
+
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.user = import ./home/gaming.nix;
+          }
         ];
       };
     };
