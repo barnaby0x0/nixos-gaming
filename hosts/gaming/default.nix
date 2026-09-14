@@ -65,6 +65,7 @@
     htop
     btop
     fastfetch
+    brave
   ];
 
   nix.settings = {
