@@ -33,8 +33,13 @@
 
   programs.git = {
     enable = true;
-
-    userName = "user";
-    userEmail = "change-me@example.com";
+  
+    settings = {
+      user = {
+        name = "user";
+        email = "change-me@example.com";
+      };
+    };
   };
+
 }

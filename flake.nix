@@ -43,6 +43,7 @@
           # CachyOS kernel
           {
             nixpkgs.overlays = [
+              nixpkgs.config.allowUnfree = true;
               nix-cachyos-kernel.overlays.pinned
             ];
           }
