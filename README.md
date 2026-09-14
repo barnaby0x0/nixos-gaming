@@ -259,7 +259,11 @@ Use:
 
 sudo nixos-install \
   --no-write-lock-file \
-  --flake github:barnaby0x0/nixos-gaming#gaming
+  --flake github:barnaby0x0/nixos-gaming#gaming --refresh
+
+  sudo nixos-rebuild switch \
+  --no-write-lock-file \
+  --flake github:barnaby0x0/nixos-gaming#gaming --refresh
 
 Why --no-write-lock-file?
 
