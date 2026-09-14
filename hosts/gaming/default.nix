@@ -47,17 +47,12 @@
   services.blueman.enable = true;
 
   services.openssh = {
-  enable = true;
-  openFirewall = true;
-  settings = {
-    PasswordAuthentication = true;
-    KbdInteractiveAuthentication = false;
-    PermitRootLogin = "no";
-    AllowUsers = [ "user" ];
-    MaxAuthTries = 3;
-    PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
   };
-};
 
   users.users.user = {
     isNormalUser = true;
@@ -72,6 +67,10 @@
 
     initialPassword = "changeme";
   };
+
+  users.users.user.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1oFq0GYt8j7vg2nNAJNzwBtqrdOUDp8CMQwLRiz4Vz user@ull"
+  ];
 
   security.sudo.wheelNeedsPassword = true;
 
