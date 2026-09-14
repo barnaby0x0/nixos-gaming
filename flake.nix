@@ -37,18 +37,19 @@
         inherit system;
 
         modules = [
-          # Disko
-          disko.nixosModules.disko
-
-          # CachyOS kernel
+          # Nixpkgs configuration + CachyOS overlay
           {
+            nixpkgs.config.allowUnfree = true;
+
             nixpkgs.overlays = [
-              nixpkgs.config.allowUnfree = true;
               nix-cachyos-kernel.overlays.pinned
             ];
           }
 
-          # Host
+          # Disko
+          disko.nixosModules.disko
+
+          # Host configuration
           ./hosts/gaming
 
           # System modules
