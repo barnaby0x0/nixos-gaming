@@ -19,8 +19,6 @@
     powerOnBoot = false;
   };
 
-  services.blueman.enable = true;
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Zurich";
@@ -45,6 +43,8 @@
   services.xserver = {
     xkb.layout = "fr";
   };
+
+  services.blueman.enable = true;
 
   users.users.user = {
     isNormalUser = true;
