@@ -15,6 +15,8 @@
     fzf
     btop
     htop
+    direnv
+    zsh-powerlevel10k
   ];
 
   programs.bash = {
@@ -326,8 +328,6 @@ programs.zsh = {
   oh-my-zsh = {
     enable = true;
 
-    theme = "powerlevel10k/powerlevel10k";
-
     plugins = [
       "sudo"
     ];
@@ -336,9 +336,7 @@ programs.zsh = {
   history = {
     size = 10000;
     save = 10000;
-
     ignoreDups = true;
-
     extended = true;
   };
 
@@ -349,61 +347,30 @@ programs.zsh = {
   };
 
   initContent = ''
-    # ==========================================================
     # PATH
-    # ==========================================================
-
     export PATH="$HOME/.local/bin:$PATH"
     export PATH="$HOME/bin:$PATH"
 
-
-    # ==========================================================
     # Locale
-    # ==========================================================
-
     export LANG="fr_FR.UTF-8"
     export LC_MESSAGES="fr_FR.UTF-8"
     export LC_ALL="fr_FR.UTF-8"
 
-
-    # ==========================================================
-    # Docker
-    # ==========================================================
-
-    # export DOCKER_HOST="unix:///run/user/1000/docker.sock"
-    # export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
-
-
-    # ==========================================================
     # GPG
-    # ==========================================================
-
     export GPG_TTY="$(tty)"
 
-
-    # ==========================================================
-    # Direnv
-    # ==========================================================
-
-    eval "$(direnv hook zsh)"
-
-
-    # ==========================================================
     # run-help
-    # ==========================================================
-
     unalias run-help 2>/dev/null
     alias help=run-help
-
     autoload -Uz run-help
 
-
-    # ==========================================================
     # Powerlevel10k
-    # ==========================================================
+    source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
+    # Powerlevel10k configuration
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
   '';
 };
+
 
 }
