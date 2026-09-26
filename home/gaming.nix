@@ -15,7 +15,6 @@
     fzf
     btop
     htop
-    vim-full
   ];
 
   programs.bash = {
