@@ -72,46 +72,59 @@ programs.vim = {
   ];
 
   settings = {
-    # Appearance
     background = "dark";
     number = true;
     cursorline = true;
     ruler = true;
 
-    # Editing
-    autoindent = true;
-    smartindent = true;
     expandtab = true;
     shiftwidth = 2;
     tabstop = 2;
     softtabstop = 2;
 
-    # Search
     ignorecase = true;
     hlsearch = true;
     incsearch = true;
 
-    # Completion
-    complete = ".,w,b,u";
-
-    # Behavior
     nobackup = true;
-    nocompatible = true;
     autowriteall = true;
     backspace = "indent,eol,start";
     showmatch = true;
     updatetime = 100;
 
-    # File handling
     encoding = "UTF-8";
     fileformat = "unix";
 
-    # UI
     laststatus = 2;
     termguicolors = true;
   };
 
   extraConfig = ''
+    " ============================================================
+    " Basic Vim configuration
+    " ============================================================
+
+    syntax on
+    filetype on
+    filetype plugin indent on
+
+    set nocompatible
+    set autoindent
+    set smartindent
+
+    set complete=.,w,b,u
+
+    set et
+    set ai
+    set si
+    set ic
+    set nu
+
+    set sw=2
+    set ts=2
+    set sts=2
+
+
     " ============================================================
     " Theme
     " ============================================================
@@ -121,15 +134,6 @@ programs.vim = {
     let g:onedark_terminal_italics = 1
 
     colorscheme onedark
-
-
-    " ============================================================
-    " Filetype
-    " ============================================================
-
-    filetype on
-    filetype plugin indent on
-    syntax on
 
 
     " ============================================================
@@ -157,7 +161,7 @@ programs.vim = {
 
 
     " ============================================================
-    " Goyo / fullscreen
+    " Goyo
     " ============================================================
 
     let g:goyo_width = '100%'
@@ -281,9 +285,9 @@ programs.vim = {
     " ============================================================
 
     autocmd FileType yaml setlocal
-          \ tabstop=2
-          \ softtabstop=2
-          \ shiftwidth=2
+          \ ts=2
+          \ sts=2
+          \ sw=2
           \ expandtab
           \ indentkeys-=0#
           \ indentkeys-=<:>
