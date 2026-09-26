@@ -83,25 +83,6 @@ programs.vim = {
     vim-gnupg
   ];
 
-  # Only options explicitly exposed by Home Manager.
-  # Everything else goes into extraConfig below.
-  settings = {
-    background = "dark";
-
-    number = true;
-    cursorline = true;
-    ruler = true;
-
-    expandtab = true;
-    shiftwidth = 2;
-    tabstop = 2;
-    softtabstop = 2;
-
-    ignorecase = true;
-    hlsearch = true;
-    incsearch = true;
-  };
-
   extraConfig = ''
     " ==========================================================
     " Basic configuration
@@ -114,11 +95,16 @@ programs.vim = {
 
     set nocompatible
 
+    set background=dark
+    set number
+    set cursorline
+    set ruler
+
     set autoindent
     set smartindent
 
-    set autowriteall
     set nobackup
+    set autowriteall
 
     set encoding=UTF-8
     set fileformat=unix
@@ -130,15 +116,14 @@ programs.vim = {
 
     set updatetime=100
 
-    set et
-    set ai
-    set si
-    set ic
-    set nu
+    set hlsearch
+    set incsearch
+    set ignorecase
 
-    set sw=2
-    set ts=2
-    set sts=2
+    set expandtab
+    set shiftwidth=2
+    set tabstop=2
+    set softtabstop=2
 
     set termguicolors
 
@@ -226,6 +211,17 @@ programs.vim = {
 
 
     " ==========================================================
+    " Devicons
+    " ==========================================================
+
+    let g:webdevicons_enable = 1
+    let g:webdevicons_enable_nerdtree = 1
+    let g:WebDevIconsUnicodeDecorateFileNodes = 1
+    let g:webdevicons_conceal_nerdtree_brackets = 1
+    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
+
+    " ==========================================================
     " NERDTree startup
     " ==========================================================
 
@@ -274,17 +270,6 @@ programs.vim = {
 
 
     " ==========================================================
-    " Devicons
-    " ==========================================================
-
-    let g:webdevicons_enable = 1
-    let g:webdevicons_enable_nerdtree = 1
-    let g:WebDevIconsUnicodeDecorateFileNodes = 1
-    let g:webdevicons_conceal_nerdtree_brackets = 1
-    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-
-
-    " ==========================================================
     " Markdown
     " ==========================================================
 
@@ -323,7 +308,7 @@ programs.vim = {
 
 
     " ==========================================================
-    " Macros
+    " Macro
     " ==========================================================
 
     let @a = "ggi#! /bin/bash\n\n"
