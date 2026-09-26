@@ -61,6 +61,10 @@ i18n = {
     };
   };
 
+  programs.zsh.enable = true;
+
+  users.users.user.shell = pkgs.zsh;
+
   users.users.user = {
     isNormalUser = true;
 
@@ -91,6 +95,7 @@ i18n = {
     btop
     fastfetch
     brave
+    zsh
   ];
 
 
