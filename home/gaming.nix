@@ -41,7 +41,6 @@
 programs.vim = {
   enable = true;
   defaultEditor = true;
-  package = pkgs.vim-full;
 
   plugins = with pkgs.vimPlugins; [
     # Theme
