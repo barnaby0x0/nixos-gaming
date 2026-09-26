@@ -352,9 +352,9 @@ programs.zsh = {
     export PATH="$HOME/bin:$PATH"
 
     # Locale
-    export LANG="fr_FR.UTF-8"
-    export LC_MESSAGES="fr_FR.UTF-8"
-    export LC_ALL="fr_FR.UTF-8"
+    # export LANG="fr_FR.UTF-8"
+    # export LC_MESSAGES="fr_FR.UTF-8"
+    # export LC_ALL="fr_FR.UTF-8"
 
     # GPG
     export GPG_TTY="$(tty)"
