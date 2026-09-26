@@ -314,4 +314,96 @@ programs.vim = {
     let @a = "ggi#! /bin/bash\n\n"
   '';
   };
+
+
+programs.zsh = {
+  enable = true;
+
+  enableCompletion = true;
+  autosuggestion.enable = true;
+  syntaxHighlighting.enable = true;
+
+  oh-my-zsh = {
+    enable = true;
+
+    theme = "powerlevel10k/powerlevel10k";
+
+    plugins = [
+      "sudo"
+    ];
+  };
+
+  history = {
+    size = 10000;
+    save = 10000;
+
+    ignoreDups = true;
+
+    extended = true;
+  };
+
+  shellAliases = {
+    dotfiles = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
+    dotcrypt = "GIT_DIR=$HOME/.dotfiles/ GIT_WORK_TREE=$HOME git-crypt";
+    cqt = "cat";
+  };
+
+  initContent = ''
+    # ==========================================================
+    # PATH
+    # ==========================================================
+
+    export PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/bin:$PATH"
+
+
+    # ==========================================================
+    # Locale
+    # ==========================================================
+
+    export LANG="fr_FR.UTF-8"
+    export LC_MESSAGES="fr_FR.UTF-8"
+    export LC_ALL="fr_FR.UTF-8"
+
+
+    # ==========================================================
+    # Docker
+    # ==========================================================
+
+    # export DOCKER_HOST="unix:///run/user/1000/docker.sock"
+    # export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
+
+
+    # ==========================================================
+    # GPG
+    # ==========================================================
+
+    export GPG_TTY="$(tty)"
+
+
+    # ==========================================================
+    # Direnv
+    # ==========================================================
+
+    eval "$(direnv hook zsh)"
+
+
+    # ==========================================================
+    # run-help
+    # ==========================================================
+
+    unalias run-help 2>/dev/null
+    alias help=run-help
+
+    autoload -Uz run-help
+
+
+    # ==========================================================
+    # Powerlevel10k
+    # ==========================================================
+
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+  '';
+};
+
 }
