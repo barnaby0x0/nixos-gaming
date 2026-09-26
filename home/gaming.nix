@@ -62,7 +62,6 @@ programs.vim = {
     vim-gitgutter
 
     # Languages / formats
-    dockerfile-vim
     vim-markdown
     nginx-vim
     vim-terraform
