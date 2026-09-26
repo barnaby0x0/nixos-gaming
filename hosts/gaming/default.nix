@@ -96,6 +96,7 @@ i18n = {
     fastfetch
     brave
     zsh
+    vscodium
   ];
 
 
