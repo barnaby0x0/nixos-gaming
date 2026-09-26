@@ -313,7 +313,5 @@ programs.vim = {
 
     let @a = "ggi#! /bin/bash\n\n"
   '';
-};
-
-
+  };
 }
