@@ -19,9 +19,26 @@
     powerOnBoot = false;
   };
 
-  networking.networkmanager.enable = true;
-  networking.resolvconf.enable = false;
+  networking = {
+    networkmanager = {
+      enable = true;
+      dns = "none";  # Empêche NetworkManager d'écraser resolv.conf
+    };
+  };
+
+  # S'assurer que resolved n'interfère pas
   services.resolved.enable = false;
+
+  # Fichier statique
+  environment.etc."resolv.conf" = {
+    mode = "0644";
+    text = ''
+      nameserver 1.1.1.1
+      nameserver 9.9.9.9
+      search lan
+    '';
+  };
+  
 
   time.timeZone = "Europe/Zurich";
 
