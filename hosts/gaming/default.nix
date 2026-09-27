@@ -35,8 +35,8 @@
   environment.etc."resolv.conf" = {
     mode = "0644";
     text = ''
+      nameserver 10.1.0.51
       nameserver 1.1.1.1
-      nameserver 9.9.9.9
       search lan
     '';
   };
