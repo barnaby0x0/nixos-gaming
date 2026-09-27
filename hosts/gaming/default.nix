@@ -26,6 +26,8 @@
     };
   };
 
+  networking.resolvconf.enable = false;
+
   # S'assurer que resolved n'interfère pas
   services.resolved.enable = false;
 
