@@ -20,6 +20,8 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.resolvconf.enable = false;
+  services.resolved.enable = false;
 
   time.timeZone = "Europe/Zurich";
 
@@ -43,8 +45,6 @@ i18n = {
     LC_TIME = "fr_FR.UTF-8";
   };
 };
-
-
 
   console.keyMap = "fr";
   services.xserver = {
@@ -84,6 +84,11 @@ i18n = {
   ];
 
   security.sudo.wheelNeedsPassword = true;
+
+  environment.etc."resov.conf".text = ''
+    nameserver 1.1.1.1
+    nameserver 10.1.0.51
+  '';
 
   environment.systemPackages = with pkgs; [
     git
