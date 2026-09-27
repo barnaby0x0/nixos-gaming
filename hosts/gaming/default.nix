@@ -104,7 +104,7 @@ i18n = {
 
   security.sudo.wheelNeedsPassword = true;
   security.pki.certificateFiles = [
-    /etc/secrets/vault-ca.crt
+    ./certs/proxlab-ca.crt
   ];
 
   environment.etc."resov.conf".text = ''
