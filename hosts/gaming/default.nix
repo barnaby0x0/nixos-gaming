@@ -103,6 +103,9 @@ i18n = {
   ];
 
   security.sudo.wheelNeedsPassword = true;
+  security.pki.certificateFiles = [
+    /etc/secrets/vault-ca.crt
+  ];
 
   environment.etc."resov.conf".text = ''
     nameserver 1.1.1.1
