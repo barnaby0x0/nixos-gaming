@@ -8,6 +8,7 @@
 
   imports = [
     ./programs/terminator.nix
+    ./programs/vim.nix
   ];
 
   home.packages = with pkgs; [
