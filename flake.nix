@@ -78,15 +78,6 @@
           ./modules/performance.nix
 
           # Home Manager
-          #home-manager.nixosModules.home-manager
-
-          #{
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-
-          #  home-manager.users.user = import ./home/gaming.nix;
-          #}
-
           home-manager.nixosModules.home-manager
 
           {
@@ -95,15 +86,10 @@
 
             home-manager.users.user = {
               imports = [
-                dotfiles.homeManagerModules.default
+                dotfiles.homeManagerModules.user
               ];
-
-              home.username = "user";
-              home.homeDirectory = "/home/user";
-              home.stateVersion = "26.05";
             };
           }
-
         ];
       };
     };
