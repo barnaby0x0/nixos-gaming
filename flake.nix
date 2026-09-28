@@ -18,11 +18,11 @@
       url = "github:xddxdd/nix-cachyos-kernel/release";
     };
 
-    dotfiles.url = "path:../dotfiles";
+    #dotfiles.url = "path:../dotfiles";
 
-    #dotfiles = {
-    #  url = "github:barnaby0x0/nixdot";
-    #};
+    dotfiles = {
+      url = "github:barnaby0x0/nixdot";
+    };
   };
 
   outputs =
