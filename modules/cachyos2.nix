@@ -1,13 +1,15 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.hardware.cpu.vendor = lib.mkOption {
+  options.cachyos.cpu = lib.mkOption {
     type = lib.types.enum [
       "amd"
       "intel"
     ];
 
-    description = "CPU vendor used for CPU-specific configuration.";
+    default = "amd";
+
+    description = "CPU vendor used for CachyOS-specific configuration.";
   };
 
   config = {
@@ -15,19 +17,23 @@
       pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
     boot.kernelParams =
-      lib.optionals (config.hardware.cpu.vendor == "amd") [
+      lib.optionals (config.cachyos.cpu == "amd") [
         "amd_pstate=active"
       ];
 
     boot.kernelModules =
-      if config.hardware.cpu.vendor == "amd"
-      then [ "kvm-amd" ]
-      else [ "kvm-intel" ];
+      if config.cachyos.cpu == "amd"
+      then [
+        "kvm-amd"
+      ]
+      else [
+        "kvm-intel"
+      ];
 
     hardware.cpu.amd.updateMicrocode =
-      lib.mkIf (config.hardware.cpu.vendor == "amd") true;
+      lib.mkIf (config.cachyos.cpu == "amd") true;
 
     hardware.cpu.intel.updateMicrocode =
-      lib.mkIf (config.hardware.cpu.vendor == "intel") true;
+      lib.mkIf (config.cachyos.cpu == "intel") true;
   };
 }

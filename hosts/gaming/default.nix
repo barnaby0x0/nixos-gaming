@@ -14,6 +14,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  #hardware.cpu.vendor = "amd";
+  cachyos.cpu = "amd";
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
