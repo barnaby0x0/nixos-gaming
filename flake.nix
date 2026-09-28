@@ -41,16 +41,16 @@
     in
     {
 
-      homeConfigurations.arch = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+      #homeConfigurations.arch = home-manager.lib.homeManagerConfiguration {
+      #  pkgs = import nixpkgs {
+      #    inherit system;
+      #    config.allowUnfree = true;
+      #  };
 
-        modules = [
-          ./home/arch.nix
-        ];
-      };
+      #  modules = [
+      #    ./home/arch.nix
+      #  ];
+      #};
 
       nixosConfigurations.gaming = nixpkgs.lib.nixosSystem {
         inherit system;
