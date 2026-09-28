@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.zsh = {
@@ -10,8 +10,6 @@
 
     oh-my-zsh = {
       enable = true;
-
-      theme = "powerlevel10k/powerlevel10k";
 
       plugins = [
         "sudo"
@@ -31,12 +29,10 @@
       cqt = "cat";
     };
 
-    # Doit être défini avant le chargement d'Oh My Zsh
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
+      # Oh My Zsh custom directory
       export ZSH_CUSTOM="$HOME/.custom"
-    '';
 
-    initContent = ''
       # PATH
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/bin:$PATH"
