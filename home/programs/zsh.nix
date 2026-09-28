@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+
 {
   programs.zsh = {
     enable = true;
@@ -28,15 +29,18 @@
       cqt = "cat";
     };
 
-    initContent = ''
+    initContent = lib.mkBefore ''
+      # Oh My Zsh custom directory
+      export ZSH_CUSTOM="$HOME/.custom"
+
       # PATH
       export PATH="$HOME/.local/bin:$PATH"
       export PATH="$HOME/bin:$PATH"
 
       # Locale
-      # export LANG="fr_FR.UTF-8"
-      # export LC_MESSAGES="fr_FR.UTF-8"
-      # export LC_ALL="fr_FR.UTF-8"
+      export LANG="fr_FR.UTF-8"
+      export LC_MESSAGES="fr_FR.UTF-8"
+      export LC_ALL="fr_FR.UTF-8"
 
       # GPG
       export GPG_TTY="$(tty)"
@@ -52,5 +56,10 @@
       # Powerlevel10k configuration
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

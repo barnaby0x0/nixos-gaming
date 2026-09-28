@@ -63,7 +63,7 @@
           ./hosts/gaming
 
           # System modules
-          ./modules/cachyos.nix
+          ./modules/cachyos2.nix
           ./modules/desktop.nix
           ./modules/gaming.nix
           ./modules/performance.nix
