@@ -17,6 +17,12 @@
     nix-cachyos-kernel = {
       url = "github:xddxdd/nix-cachyos-kernel/release";
     };
+
+    dotfiles.url = "path:../dotfiles";
+
+    #dotfiles = {
+    #  url = "github:barnaby0x0/nixdot";
+    #};
   };
 
   outputs =
@@ -26,6 +32,7 @@
       home-manager,
       disko,
       nix-cachyos-kernel,
+      dotfiles,
       ...
     }:
 
@@ -71,14 +78,32 @@
           ./modules/performance.nix
 
           # Home Manager
+          #home-manager.nixosModules.home-manager
+
+          #{
+          #  home-manager.useGlobalPkgs = true;
+          #  home-manager.useUserPackages = true;
+
+          #  home-manager.users.user = import ./home/gaming.nix;
+          #}
+
           home-manager.nixosModules.home-manager
 
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users.user = import ./home/gaming.nix;
+            home-manager.users.user = {
+              imports = [
+                dotfiles.homeManagerModules.default
+              ];
+
+              home.username = "user";
+              home.homeDirectory = "/home/user";
+              home.stateVersion = "26.05";
+            };
           }
+
         ];
       };
     };
