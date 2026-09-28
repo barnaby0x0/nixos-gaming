@@ -6,6 +6,10 @@
 {
   home.stateVersion = "26.05";
 
+imports = [
+    ./programs/terminator.nix
+  ];
+
   home.packages = with pkgs; [
     git
     jq
