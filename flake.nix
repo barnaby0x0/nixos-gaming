@@ -1,16 +1,6 @@
 {
   description = "NixOS Gaming - CachyOS optimized gaming system";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://attic.xuyh0120.win/lantian"
-    ];
-
-    extra-trusted-public-keys = [
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-    ];
-  };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -43,6 +33,18 @@
       system = "x86_64-linux";
     in
     {
+
+      homeConfigurations.arch = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
+        modules = [
+          ./home/arch.nix
+        ];
+      };
+
       nixosConfigurations.gaming = nixpkgs.lib.nixosSystem {
         inherit system;
 
