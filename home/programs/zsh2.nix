@@ -8,13 +8,9 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/bin"
-    ];
-
     oh-my-zsh = {
       enable = true;
+
       theme = "powerlevel10k/powerlevel10k";
 
       plugins = [
@@ -35,23 +31,33 @@
       cqt = "cat";
     };
 
+    # Doit être défini avant le chargement d'Oh My Zsh
     initExtraFirst = ''
       export ZSH_CUSTOM="$HOME/.custom"
     '';
 
     initContent = ''
+      # PATH
+      export PATH="$HOME/.local/bin:$PATH"
+      export PATH="$HOME/bin:$PATH"
+
+      # Locale
       export LANG="fr_FR.UTF-8"
       export LC_MESSAGES="fr_FR.UTF-8"
       export LC_ALL="fr_FR.UTF-8"
 
+      # GPG
       export GPG_TTY="$(tty)"
 
+      # run-help
       unalias run-help 2>/dev/null
       alias help=run-help
       autoload -Uz run-help
 
+      # Powerlevel10k
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
+      # Powerlevel10k configuration
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
     '';
   };
