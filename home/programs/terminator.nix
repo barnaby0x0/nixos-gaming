@@ -1,6 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+
+  home.packages = with pkgs; [
+    terminator
+  ];
+
   home.file.".config/terminator/config".text = ''
     [global_config]
 
