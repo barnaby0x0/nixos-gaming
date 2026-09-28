@@ -6,8 +6,11 @@
 
     settings = {
       user = {
-        name = "user";
-        email = "change-me@example.com";
+        name = "Victor";
+        email = "victor@mail.com";
+      };
+      status = {
+        showUntrackedFiles = "yes";
       };
     };
   };

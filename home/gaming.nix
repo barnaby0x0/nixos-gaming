@@ -11,7 +11,7 @@
     ./programs/git.nix
     ./programs/terminator.nix
     ./programs/vim.nix
-    ./programs/zsh.nix
+    ./programs/zsh2.nix
   ];
 
   home.packages = with pkgs; [
