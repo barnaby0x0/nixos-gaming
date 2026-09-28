@@ -6,16 +6,16 @@
 
   home.stateVersion = "25.11";
 
-#  home.packages = with pkgs; [
-#    ripgrep
-#    fd
-#    fzf
-#    jq
-#    yq
-#    git
-#  ];
+  #  home.packages = with pkgs; [
+  #    ripgrep
+  #    fd
+  #    fzf
+  #    jq
+  #    yq
+  #    git
+  #  ];
 
-#  programs.zsh.enable = true;
+  #  programs.zsh.enable = true;
 
-#  programs.git.enable = true;
+  #  programs.git.enable = true;
 }
