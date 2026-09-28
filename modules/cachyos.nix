@@ -4,8 +4,7 @@
 }:
 
 {
-  boot.kernelPackages =
-    pkgs.cachyosKernels.linuxPackages-cachyos-latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
 
   boot.kernelParams = [
     "amd_pstate=active"

@@ -22,7 +22,7 @@
   networking = {
     networkmanager = {
       enable = true;
-      dns = "none";  # Empêche NetworkManager d'écraser resolv.conf
+      dns = "none"; # Empêche NetworkManager d'écraser resolv.conf
     };
   };
 
@@ -40,30 +40,29 @@
       search lan
     '';
   };
-  
 
   time.timeZone = "Europe/Zurich";
 
-i18n = {
-  defaultLocale = "fr_FR.UTF-8";
+  i18n = {
+    defaultLocale = "fr_FR.UTF-8";
 
-  supportedLocales = [
-    "fr_FR.UTF-8/UTF-8"
-    "en_US.UTF-8/UTF-8"
-  ];
+    supportedLocales = [
+      "fr_FR.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+    ];
 
-  extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "fr_FR.UTF-8";
+      LC_IDENTIFICATION = "fr_FR.UTF-8";
+      LC_MEASUREMENT = "fr_FR.UTF-8";
+      LC_MONETARY = "fr_FR.UTF-8";
+      LC_NAME = "fr_FR.UTF-8";
+      LC_NUMERIC = "fr_FR.UTF-8";
+      LC_PAPER = "fr_FR.UTF-8";
+      LC_TELEPHONE = "fr_FR.UTF-8";
+      LC_TIME = "fr_FR.UTF-8";
+    };
   };
-};
 
   console.keyMap = "fr";
   services.xserver = {
@@ -126,11 +125,10 @@ i18n = {
     vscodium
   ];
 
-
-nix.settings.experimental-features = [
-  "nix-command"
-  "flakes"
-];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.settings = {
     trusted-users = [

@@ -17,11 +17,11 @@
     "usb_storage"
   ];
 
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = [ ];
 
-  boot.kernelModules = [];
+  boot.kernelModules = [ ];
 
-  boot.extraModulePackages = [];
+  boot.extraModulePackages = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
