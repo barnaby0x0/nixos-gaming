@@ -22,6 +22,7 @@
 
     dotfiles = {
       url = "github:barnaby0x0/nixdot";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
