@@ -45,6 +45,30 @@
         inherit system;
 
         modules = [
+
+          # === Overlay pour corriger lazarus ===
+{
+  nixpkgs.overlays = [
+    (final: prev: {
+      lazarus-qt6 = prev.lazarus-qt6.overrideAttrs (old: {
+        postInstall =
+          builtins.replaceStrings
+            [
+              ''  --prefix NIX_LDFLAGS ' ' "$(echo "$NIX_LDFLAGS" | sed -re 's/-rpath [^ ]+//g')" \
+''
+              ''  --prefix NIX_LDFLAGS_x86_64_unknown_linux_gnu ' ' "$(echo "$NIX_LDFLAGS" | sed -re 's/-rpath [^ ]+//g')" \
+''
+            ]
+            [
+              ""
+              ""
+            ]
+            old.postInstall;
+      });
+    })
+  ];
+}
+
           # Nixpkgs configuration + CachyOS overlay
           {
             nixpkgs.config.allowUnfree = true;
