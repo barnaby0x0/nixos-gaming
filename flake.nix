@@ -45,10 +45,11 @@
         inherit system;
 
         modules = [
-
-          # === Overlay pour corriger lazarus ===
           {
+            nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
+              nix-cachyos-kernel.overlays.pinned
+              # === Overlay pour corriger lazarus ===
               (final: prev: {
                 lazarus-qt6 = prev.lazarus-qt6.overrideAttrs (old: {
                   postInstall =
@@ -72,13 +73,13 @@
           }
 
           # Nixpkgs configuration + CachyOS overlay
-          {
-            nixpkgs.config.allowUnfree = true;
+          # {
+          #   nixpkgs.config.allowUnfree = true;
 
-            nixpkgs.overlays = [
-              nix-cachyos-kernel.overlays.pinned
-            ];
-          }
+          #   nixpkgs.overlays = [
+          #     nix-cachyos-kernel.overlays.pinned
+          #   ];
+          # }
 
           # Disko
           disko.nixosModules.disko
