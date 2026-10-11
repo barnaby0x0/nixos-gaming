@@ -39,11 +39,22 @@
 
     let
       system = "x86_64-linux";
+
+      users = {
+        user = {
+          enableVirt = true;
+          homeManager = true;
+        };
+      };
+
     in
     {
 
       nixosConfigurations.gaming = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = {
+          inherit users;
+        };
 
         modules = [
           {
@@ -93,20 +104,33 @@
           ./modules/desktop.nix
           ./modules/gaming.nix
           ./modules/performance.nix
+          ./modules/virt.nix
 
           # Home Manager
           home-manager.nixosModules.home-manager
+
+          # {
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+
+          #   home-manager.users.user = {
+          #     imports = [
+          #       dotfiles.homeManagerModules.user
+          #     ];
+          #   };
+          # }
 
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            home-manager.users.user = {
+            home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
               imports = [
                 dotfiles.homeManagerModules.user
               ];
-            };
+            }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
           }
+
         ];
       };
     };

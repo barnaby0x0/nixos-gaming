@@ -126,7 +126,6 @@
     brave
     zsh
     vscodium
-    qemu
   ];
 
   nix.settings.experimental-features = [
