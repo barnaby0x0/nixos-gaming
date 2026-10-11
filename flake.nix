@@ -126,7 +126,7 @@
 
             home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
               imports = [
-                dotfiles.homeManagerModules.user
+                dotfiles.homeManagerModules.${name}
               ];
             }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
           }
