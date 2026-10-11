@@ -42,7 +42,7 @@
 
       users = {
         user = {
-          enableVirt = true;
+          enableVirt = false;
           homeManager = true;
         };
       };
