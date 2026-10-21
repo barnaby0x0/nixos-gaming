@@ -44,6 +44,11 @@
         user = {
           enableVirt = true;
           homeManager = true;
+
+          git = {
+            name = "Ton nom";
+            email = "ton-email@example.com";
+          };
         };
       };
 
