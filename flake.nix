@@ -46,8 +46,8 @@
           homeManager = true;
 
           git = {
-            name = "Ton nom";
-            email = "ton-email@example.com";
+            name = "Victor";
+            email = "victor@mail.net";
           };
         };
       };
