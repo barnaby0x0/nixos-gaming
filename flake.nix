@@ -20,8 +20,8 @@
 
     #dotfiles.url = "path:../dotfiles";
 
-    dotfiles = {
-      url = "github:barnaby0x0/nixdot";
+    nix-config = {
+      url = "github:barnaby0x0/nix-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -33,7 +33,7 @@
       home-manager,
       disko,
       nix-cachyos-kernel,
-      dotfiles,
+      nix-config,
       ...
     }:
 
@@ -46,6 +46,8 @@
           homeManager = true;
         };
       };
+
+      pkgs = nixpkgs.legacyPackages.${system};
 
     in
     {
@@ -124,14 +126,31 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
+            # home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
+            #   imports = [
+            #     dotfiles.homeManagerModules.${name}
+            #   ];
+            # }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
+
+            home-manager.extraSpecialArgs = {
+              inherit users;
+            };
+
             home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
               imports = [
-                dotfiles.homeManagerModules.${name}
+                nix-config.homeModules.default
               ];
-            }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
-          }
 
+              userConfig = {
+                username = name;
+                homeDirectory = "/home/${name}";
+                git = user.git;
+              };
+            }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
+
+          }
         ];
       };
+      formatter.${system} = pkgs.nixfmt;
     };
 }

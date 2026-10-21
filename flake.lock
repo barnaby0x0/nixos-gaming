@@ -20,27 +20,6 @@
         "type": "github"
       }
     },
-    "dotfiles": {
-      "inputs": {
-        "home-manager": "home-manager",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1791492304,
-        "narHash": "sha256-rIAwv3RKkN4PRbpWNy4Xy75QzylT8BPwHb4LJdsbnrg=",
-        "owner": "barnaby0x0",
-        "repo": "nixdot",
-        "rev": "11d7f9a743c927780453d1fddefbef7cd5d47789",
-        "type": "github"
-      },
-      "original": {
-        "owner": "barnaby0x0",
-        "repo": "nixdot",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -78,16 +57,15 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "dotfiles",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1790365885,
-        "narHash": "sha256-iQ0ebhiVo64NktTnwft9hNxlFu4j5cvljVxyJaEVIP4=",
+        "lastModified": 1791642191,
+        "narHash": "sha256-0bK0A59rVUn1SRZzo4cNi4VSqAe7vR1gL2/MZl53Frw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7b4c5ec4bedaf1e062bbc1bcaeddbc6bd242aa1b",
+        "rev": "c58f54c733a7894d84fa2fdff26cc12088c4b78c",
         "type": "github"
       },
       "original": {
@@ -99,15 +77,16 @@
     "home-manager_2": {
       "inputs": {
         "nixpkgs": [
+          "nix-config",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1791642191,
-        "narHash": "sha256-0bK0A59rVUn1SRZzo4cNi4VSqAe7vR1gL2/MZl53Frw=",
+        "lastModified": 1792421589,
+        "narHash": "sha256-kd1uAerzkPNEBTh+Bl5wdfVqP2MPpxTRvcWtfbIP1kI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c58f54c733a7894d84fa2fdff26cc12088c4b78c",
+        "rev": "94c556362d7ef878175d2f0eb3045565d1685b0c",
         "type": "github"
       },
       "original": {
@@ -134,6 +113,27 @@
         "owner": "xddxdd",
         "ref": "release",
         "repo": "nix-cachyos-kernel",
+        "type": "github"
+      }
+    },
+    "nix-config": {
+      "inputs": {
+        "home-manager": "home-manager_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792583128,
+        "narHash": "sha256-uyg6QHQvheAFVB+LOIB5KXtqipa9ECNvk34rQI2vCMo=",
+        "owner": "barnaby0x0",
+        "repo": "nix-config",
+        "rev": "edc35145fee84f854b22744c7ed282302ee9c140",
+        "type": "github"
+      },
+      "original": {
+        "owner": "barnaby0x0",
+        "repo": "nix-config",
         "type": "github"
       }
     },
@@ -187,9 +187,9 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "dotfiles": "dotfiles",
-        "home-manager": "home-manager_2",
+        "home-manager": "home-manager",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
+        "nix-config": "nix-config",
         "nixpkgs": "nixpkgs_2"
       }
     }
