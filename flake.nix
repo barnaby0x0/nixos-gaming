@@ -157,7 +157,7 @@
               imports = [
                 nix-config.homeModules.default
               ];
-
+              home.stateVersion = "26.05";
               _module.args.userConfig = {
                 username = name;
                 homeDirectory = "/home/${name}";
