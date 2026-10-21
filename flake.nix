@@ -18,8 +18,6 @@
       url = "github:xddxdd/nix-cachyos-kernel/release";
     };
 
-    #dotfiles.url = "path:../dotfiles";
-
     nix-config = {
       url = "github:barnaby0x0/nix-config";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -116,26 +114,9 @@
           # Home Manager
           home-manager.nixosModules.home-manager
 
-          # {
-          #   home-manager.useGlobalPkgs = true;
-          #   home-manager.useUserPackages = true;
-
-          #   home-manager.users.user = {
-          #     imports = [
-          #       dotfiles.homeManagerModules.user
-          #     ];
-          #   };
-          # }
-
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            # home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
-            #   imports = [
-            #     dotfiles.homeManagerModules.${name}
-            #   ];
-            # }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
 
             home-manager.extraSpecialArgs = {
               inherit users;
