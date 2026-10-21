@@ -141,28 +141,12 @@
               inherit users;
             };
 
-            # home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
-            #   imports = [
-            #     nix-config.homeModules.default
-            #   ];
-
-            #   userConfig = {
-            #     username = name;
-            #     homeDirectory = "/home/${name}";
-            #     git = user.git;
-            #   };
-            # }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
-
             home-manager.users = nixpkgs.lib.mapAttrs (name: user: {
               imports = [
                 nix-config.homeModules.default
               ];
               home.stateVersion = "26.05";
-              _module.args.userConfig = {
-                username = name;
-                homeDirectory = "/home/${name}";
-                git = user.git;
-              };
+              my.user.git = user.git;
             }) (nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
 
           }
