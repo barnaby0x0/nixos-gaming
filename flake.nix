@@ -14,9 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-cachyos-kernel = {
-      url = "github:xddxdd/nix-cachyos-kernel/release";
-    };
+    # nix-cachyos-kernel = {
+    #   url = "github:xddxdd/nix-cachyos-kernel/release";
+    # };
 
     nix-config = {
       url = "github:barnaby0x0/nix-config";
@@ -30,7 +30,7 @@
       nixpkgs,
       home-manager,
       disko,
-      nix-cachyos-kernel,
+      # nix-cachyos-kernel,
       nix-config,
       ...
     }:
@@ -65,7 +65,7 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [
-              nix-cachyos-kernel.overlays.pinned
+              # nix-cachyos-kernel.overlays.pinned
               # === Overlay pour corriger lazarus ===
               (final: prev: {
                 lazarus-qt6 = prev.lazarus-qt6.overrideAttrs (old: {
