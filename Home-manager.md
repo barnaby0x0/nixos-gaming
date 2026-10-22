@@ -589,3 +589,5 @@ nixos-gaming/
 **Principe général :**
 
 > NixOS gère le système, Arch continue d'être géré par pacman, et Home Manager fournit une couche déclarative commune pour les environnements utilisateur.
+
+
